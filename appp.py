@@ -1,9 +1,6 @@
 from openai import OpenAI
-import json
 
 client = OpenAI()
-
-f = open("coroutines.json", "a")
 
 topic = "Kotlin coroutines"
 count = 50
@@ -20,7 +17,6 @@ messages = [
 
 result = []
 
-
 print(f"Run ...")
 response = client.chat.completions.create(
     model = "gpt-4o-mini",
@@ -34,6 +30,3 @@ print(response_dict)
 answer = response_dict['choices'][0]['message']['content']
 print("answer", answer)
 
-output = json.dumps(result)
-f.write(output)
-f.close()
